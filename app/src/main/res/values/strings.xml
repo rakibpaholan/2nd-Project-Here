@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Second Expedition All Practice</string>
+    <string name="resource_text_view_id">Practice Name Here</string>
+
+    <string-array name="practice_title">
+        <item>List View With ArrayAdapter</item>
+        <item>List View With OnItemClickListener</item>
+        <item>List View With BaseAdapter</item>
+        <item>List View Filtering And ScreenView</item>
+        <item>Option Menu In ActionBar</item>
+        <item>Search Menu In Action Bar</item>
+        <item>Create a Gradient</item>
+        <item>Grid View And Example</item>
+        <item>Spinner Example</item>
+        <item>Spinner OnItemSelected</item>
+        <item>Progress Bar</item>
+        <item>Full Screen Activity</item>
+        <item>Media Player</item>
+        <item>Adding Share Menu</item>
+        <item>Adding FeedBack Menu</item>
+        <item>Auto Complete Text View Example</item>
+        <item>Adding FeedBack Menu</item>
+        <item>Expandable List View</item>
+        <item>Fragment Example</item>
+    </string-array>
+
+
+
+
+
+    <string name="array_adapter_basic">
+        package com.example.listviewproject_2;\n
+
+            import androidx.appcompat.app.AppCompatActivity;\n
+
+            import android.content.Intent;\n
+            import android.os.Bundle;\n
+            import android.view.View;\n
+            import android.widget.AdapterView;\n
+            import android.widget.ArrayAdapter;\n
+            import android.widget.ListView;\n
+            import android.widget.Toast;\n
+
+            public class MainActivity extends AppCompatActivity {\n
+                \t\t private ListView listView;\n
+                \t\t @Override\n
+                \t\t protected void onCreate(Bundle savedInstanceState) {\n
+                    \t\t\t super.onCreate(savedInstanceState);\n
+                    \t\t\t setContentView(R.layout.activity_main);\n
+
+                    \t\t\t listView = (ListView)findViewById(R.id.listViewId);\n
+                    \t\t\t String [] countryName = getResources().getStringArray(R.array.country_information);\n
+                    \t\t\t ArrayAdapter<!--<String> -->listViewAdapter = new ArrayAdapter<!--<String>-->(MainActivity.this,R.layout.list_view_data_source,R.id.list_view_data_structure,countryName);\n
+                    \t\t\t listView.setAdapter(listViewAdapter);\n
+
+                    \t\t\t listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {\n
+                        \t\t\t\t @Override\n
+                        \t\t\t\tpublic void onItemClick(AdapterView<!--<?>--> parent, View view, int position, long id) {\n
+                            \t\t\tString selected_country_name = countryName[position];\n
+                            \t\t\tToast.makeText(MainActivity.this,selected_country_name,Toast.LENGTH_SHORT).show();\n
+                            \t\t\tIntent intent = new Intent(MainActivity.this,Information.class);\n
+                            \t\t\tintent.putExtra("key",selected_country_name);\n
+                            \t\t\tstartActivity(intent);\n
+                        \t}\n
+                    \t});\n
+                \t}\n
+            \t}\n
+    </string>
+
+</resources>
